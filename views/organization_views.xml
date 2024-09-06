@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<odoo>
+    <record id="ipam_organization_tree" model="ir.ui.view">
+        <field name="name">ipam.organization.tree</field>
+        <field name="model">ipam.organization</field>
+        <field name="type">tree</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="Organizations">
+                <field name="display_name" />
+                <field name="subnet_count" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="ipam_organization_search_view" model="ir.ui.view">
+        <field name="name">ipam.organization.search</field>
+        <field name="model">ipam.organization</field>
+        <field name="arch" type="xml">
+            <search string="Organizations">
+                <field name="name" string="Organizations"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ipam_organization_form" model="ir.ui.view">
+        <field name="name">ipam.organization.form</field>
+        <field name="model">ipam.organization</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="Organization" class="oe_form_configuration">
+                <sheet>
+
+                    <div class="oe_title">
+                        <label for="name" string="Organization Name"/>
+                        <h1><field name="name" placeholder="1st Floor"/></h1>
+                    </div>
+                    <group name="first" col="2">
+                        <field name="parent_id" class="oe_inline"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Networks">
+                            <field name="subnet_ids">
+                                <tree string="Networks">
+                                    <field name="name"/>
+                                    <field name="network_address" />
+                                    <field name="netmask"/>
+                                    <field name="cidr"/>
+                                    <field name="gateway"/>
+                                    <field name="network_type"/>
+                                    <field name="free_ip_count"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ipam_organization_action" model="ir.actions.act_window">
+        <field name="name">Organizations</field>
+        <field name="res_model">ipam.organization</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="ipam_organization_search_view"/>
+    </record>
+
+</odoo>

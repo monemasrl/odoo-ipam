@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<odoo>
+    <record id="ipam_net_tree" model="ir.ui.view">
+        <field name="name">ipam.net.tree</field>
+        <field name="model">ipam.net</field>
+        <field name="type">tree</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="Networks">
+                <field name="display_name" />
+                <field name="network_address" optional="hide" />
+                <field name="netmask" optional="hide" />
+                <field name="cidr" />
+                <field name="gateway" optional="hide" />
+                <field name="network_type" />
+                <field name="vlan_id" />
+                <field name="used_ip_percentage" optional="show" widget="progressbar" />
+                <field name="available_ip_count" optional="hide" />
+                <field name="used_ip_count" optional="hide" />
+                <field name="free_ip_count" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="ipam_net_search_view" model="ir.ui.view">
+        <field name="name">ipam.net.search</field>
+        <field name="model">ipam.net</field>
+        <field name="arch" type="xml">
+            <search string="Networks">
+                <field name="name" string="Networks"/>
+                <field name="parent_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ipam_net_form" model="ir.ui.view">
+        <field name="name">ipam.net.form</field>
+        <field name="model">ipam.net</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="Network" class="oe_form_configuration">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button"
+                            name="%(ipam_nic_action)d"
+                            icon="fa-th-list"
+                            type="action"
+                            context="{'search_default_net_id': id, 'default_net_id': id, 'group_expand': True}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="nic_count"/></span>
+                                <span class="o_stat_text"> NICs</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Network Name"/>
+                        <h1><field name="name" placeholder="1st Floor"/></h1>
+                    </div>
+                    <group name="first" col="2">
+                        <field name="parent_id" class="oe_inline"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="network_address" />
+                            <field name="mask_bits" />
+                            <field name="netmask" />
+                            <field name="network_type" />
+                        </group>
+                        <group>
+                            <field name="cidr" />
+                            <field name="gateway" />
+                            <field name="vlan_id" />
+                            <field name="organization_id" />
+                            <field name="free_ip_count" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ipam_net_action" model="ir.actions.act_window">
+        <field name="name">Networks</field>
+        <field name="res_model">ipam.net</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="ipam_net_search_view"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+
+    <record id="net_action_all" model="ir.actions.act_window">
+        <field name="name">Networks</field>
+        <field name="res_model">ipam.net</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Network
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<odoo>
+    <menuitem name="IPAM"
+        id="ipam_menu"
+        web_icon="ipam,static/description/icon.png"
+        sequence="30"/>
+
+    <menuitem id="ipam_net_menu" name="Networks" parent="ipam_menu" action="ipam_net_action" sequence="10" />
+    <menuitem id="ipam_vlan_menu" name="VLANs" parent="ipam_menu" action="ipam_vlan_action" sequence="30" />
+    <menuitem id="ipam_nat_menu" name="NAT" parent="ipam_menu" action="ipam_nat_action" sequence="50" />
+    <menuitem id="ipam_nic_menu" name="NICs" parent="ipam_menu" action="ipam_nic_action" sequence="40" />
+    <menuitem id="ipam_organization_menu" name="Organizations" parent="ipam_menu" action="ipam_organization_action" sequence="60" />
+</odoo>

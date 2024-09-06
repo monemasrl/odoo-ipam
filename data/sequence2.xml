@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record model="ir.sequence" id="ipam_nat_sequence">
+        <field name="name">IPAM NAT Sequence</field>
+        <field name="code">ipam.nat_seq</field>
+        <field name="active">1</field>
+        <field name="padding">7</field>
+        <field name="prefix">NAT</field>
+        <field eval="False" name="use_date_range" />
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

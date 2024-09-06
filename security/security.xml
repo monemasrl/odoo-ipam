@@ -1,0 +1,15 @@
+<odoo>
+    <!-- Copyright (C) 2024 Monema S.r.l. -->
+    <record id="module_category_ipam" model="ir.module.category">
+        <field name="name">IPAM</field>
+        <field name="description">Permessi di gruppo per modulo IPAM</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="group_ipam_user" model="res.groups">
+        <field name="name">IPAM User</field>
+        <field name="category_id" ref="module_category_ipam"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Accesso al modulo.</field>
+    </record>
+</odoo>
