@@ -20,16 +20,6 @@
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
     </record>
-    <record model="ir.sequence" id="ipam_vlan_sequence">
-        <field name="name">IPAM VLAN Sequence</field>
-        <field name="code">ipam.vlan_seq</field>
-        <field name="active">1</field>
-        <field name="padding">4</field>
-        <field name="prefix">VL</field>
-        <field eval="False" name="use_date_range" />
-        <field name="number_next">1</field>
-        <field name="number_increment">1</field>
-    </record>
     <record model="ir.sequence" id="ipam_organization_sequence">
         <field name="name">IPAM Organization Sequence</field>
         <field name="code">ipam.organization_seq</field>

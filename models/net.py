@@ -96,11 +96,7 @@ class IpamNet(models.Model):
         copy=False,
     )
 
-    vlan_id = fields.Many2one(
-        comodel_name="ipam.vlan",
-        string="VLAN",
-        copy=False,
-    )
+    vlan_id = fields.Integer(string="VLAN ID", copy=False)
 
     free_ip_count = fields.Integer( 
         string="Free IP Count",
