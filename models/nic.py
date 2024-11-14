@@ -53,7 +53,21 @@ class IpamNic(models.Model):
                 if not ipaddress.ip_address(record.ip) in ipaddress.ip_network(
                     f"{record.network_address}/{record.mask_bits}"
                 ):
-                    raise ValueError(_("IP address not in network"))
+                    raise ValueError(_(
+                        ("IP address %s not in network %s\n"
+                         "Network Name: %s\n"
+                         "Interface Name: %s\n"
+                         "FQDN: %s\n"
+                         "CIDR: %s\n"
+                         )) % (
+                                record.ip, 
+                                f"{record.network_address}/{record.mask_bits}", 
+                                record.net_id.name, 
+                                record.name,
+                                record.fqdn,
+                                record.cidr
+                            )
+                        )
 
     @api.model_create_multi
     def create(self, vals_list):

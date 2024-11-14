@@ -2,7 +2,7 @@
 <odoo>
     <menuitem name="IPAM"
         id="ipam_menu"
-        web_icon="ipam,static/description/icon.png"
+        web_icon="ipam,static/description/icon.svg"
         sequence="30"/>
 
     <menuitem id="ipam_net_menu" name="Networks" parent="ipam_menu" action="ipam_net_action" sequence="10" />
