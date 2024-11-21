@@ -10,7 +10,7 @@
         <field name="active" eval="True" />
         <field name="arch" type="xml">
             <tree editable="top">
-                <field name="name" optional="hide" />
+                <field name="name" string="Name" readonly="1" optional="hide" />
                 <field name="ip" />
                 <field name="net_id" optional="show" />
                 <field name="fqdn" />
