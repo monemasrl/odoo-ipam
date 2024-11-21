@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ipam_net,ipam.net,model_ipam_net,base.group_user,1,1,1,1
 access_ipam_nat,ipam.nat,model_ipam_nat,base.group_user,1,1,1,1
-access_ipam_nic,ipam.nic,model_ipam_nic,base.group_user,1,1,1,1
+access_ipam_ip,ipam.ip,model_ipam_ip,base.group_user,1,1,1,1
 access_ipam_organization,ipam.organization,model_ipam_organization,base.group_user,1,1,1,1

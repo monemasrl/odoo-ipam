@@ -5,5 +5,5 @@
 
 from . import net
 from . import nat
-from . import nic
+from . import ip
 from . import organization

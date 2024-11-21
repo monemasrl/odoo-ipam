@@ -8,15 +8,15 @@ import ipaddress
 from odoo import api, fields, models, _
 
 
-class IpamNic(models.Model):
+class IpamIp(models.Model):
     _name = "ipam.ip"
-    _description = "IPAM NIC"
+    _description = "IPAM IP"
     _rec_name = "name"
 
     _order = "name ASC"
 
     name = fields.Char(
-        string="Name",
+        string="name",
         required=True,
         copy=False,
         readonly=False,
@@ -32,17 +32,18 @@ class IpamNic(models.Model):
         ondelete="cascade",
     )
 
-    ip = fields.Char(string="IP")
     fqdn = fields.Char(string="DNS")
+    note = fields.Text(string="Note")
+    ip = fields.Char(string="IP", copy=False)
+
     network_address = fields.Char(related="net_id.network_address", copy=False)
     mask_bits = fields.Integer(related="net_id.mask_bits", copy=False)
     gateway = fields.Char(related="net_id.gateway", copy=False)
     netmask = fields.Char(related="net_id.netmask", copy=False)
     cidr = fields.Char(related="net_id.cidr", copy=False)
 
-    note = fields.Text(string="Note")
 
-    @api.constrains("ip", "network_address", "mask_bits")
+    @api.constrains("name", "network_address", "mask_bits")
     def _check_ip(self):
         for record in self:
             if record.ip:
@@ -56,7 +57,7 @@ class IpamNic(models.Model):
                     raise ValueError(_(
                         ("IP address %s not in network %s\n"
                          "Network Name: %s\n"
-                         "Interface Name: %s\n"
+                         "IP Name: %s\n"
                          "FQDN: %s\n"
                          "CIDR: %s\n"
                          )) % (
@@ -74,6 +75,6 @@ class IpamNic(models.Model):
         for vals in vals_list:
             if vals.get("name", _("New")) == _("New"):
                 vals["name"] = self.env["ir.sequence"].next_by_code(
-                    "ipam.nic_seq"
+                    "ipam.ipam_ip_sequence"
                 ) or _("New")
         return super().create(vals_list)

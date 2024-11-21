@@ -119,7 +119,7 @@ class IpamNet(models.Model):
     )
 
     def _compute_free_ip_count(self):
-        read_group_res = self.env['ipam.nic']._read_group(
+        read_group_res = self.env['ipam.ip']._read_group(
             [('net_id', 'child_of', self.ids)], 
             ['net_id'], 
             ['net_id']
@@ -167,13 +167,13 @@ class IpamNet(models.Model):
     )
 
     nic_ids = fields.One2many(
-        comodel_name="ipam.nic",
+        comodel_name="ipam.ip",
         inverse_name="net_id",
         string="NICs",
     )
 
     def _compute_nic_count(self):
-        read_group_res = self.env['ipam.nic']._read_group(
+        read_group_res = self.env['ipam.ip']._read_group(
             [('net_id', 'child_of', self.ids)], 
             ['net_id'], 
             ['net_id']
@@ -299,7 +299,7 @@ class IpamNet(models.Model):
 
     def _compute_attached_nic_count(self):
         for record in self:
-            nics = self.env['ipam.nic'].search([('net_id', '=', record.id)])
+            nics = self.env['ipam.ip'].search([('net_id', '=', record.id)])
             record.attached_nic_count = len(nics)
 
     @api.model

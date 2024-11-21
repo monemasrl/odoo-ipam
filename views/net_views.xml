@@ -47,7 +47,7 @@
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button"
-                            name="%(ipam_nic_action)d"
+                            name="%(ipam_ip_action)d"
                             icon="fa-th-list"
                             type="action"
                             context="{'search_default_net_id': id, 'default_net_id': id, 'group_expand': True}">
