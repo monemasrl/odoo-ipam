@@ -33,6 +33,7 @@
         "data/sequence.xml",
         "data/sequence2.xml",
         "data/sequence3.xml",
+        "data/sequence4.xml",
         "views/organization_views.xml",
         "views/ip_views.xml",
         "views/net_views.xml",

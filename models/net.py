@@ -27,7 +27,8 @@ class IpamNet(models.Model):
         required=True,
         copy=False,
         readonly=False,
-        index="trigram"
+        index="trigram",
+        default=lambda self: _("New")
     )
 
     complete_name = fields.Char(
@@ -35,15 +36,6 @@ class IpamNet(models.Model):
         compute='_compute_complete_name', 
         recursive=True, 
         store=True
-    )
-
-    code = fields.Char(
-        string="Code", 
-        required=True,
-        copy=False,
-        readonly=False,
-        index="trigram",
-        default=lambda self: _("New"),
     )
 
     active = fields.Boolean(string="Active", default=True)
@@ -346,11 +338,12 @@ class IpamNet(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if vals.get("code", _("New")) == _("New"):
-                vals["code"] = self.env["ir.sequence"].next_by_code(
+            self._check_create(vals)
+
+            if vals.get("name", _("New")) == _("New"):
+                vals["name"] = self.env["ir.sequence"].next_by_code(
                     "ipam.network_seq"
                 ) or _("New")
             # Check if network_address and mask_bits are set and if so, check if they are valid
-            self._check_create(vals)
 
         return super().create(vals_list)
