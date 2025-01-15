@@ -42,6 +42,11 @@ class IpamIp(models.Model):
     netmask = fields.Char(related="net_id.netmask", copy=False)
     cidr = fields.Char(related="net_id.cidr", copy=False)
 
+    def name_get(self):
+        result = []
+        for record in self:
+            result.append((record.id, record.ip))
+        return result
 
     @api.constrains("name", "network_address", "mask_bits")
     def _check_ip(self):
