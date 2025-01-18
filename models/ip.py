@@ -56,6 +56,9 @@ class IpamIp(models.Model):
                     ipaddress.ip_address(record.ip)
                 except ValueError:
                     raise ValueError(_("Invalid IP address"))
+                if not (record.network_address and record.mask_bits):
+                    # Skip network check if network is not set
+                    continue
                 if not ipaddress.ip_address(record.ip) in ipaddress.ip_network(
                     f"{record.network_address}/{record.mask_bits}"
                 ):
