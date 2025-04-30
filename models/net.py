@@ -31,6 +31,12 @@ class IpamNet(models.Model):
         default=lambda self: _("New")
     )
 
+    label_ids = fields.Many2many(
+        comodel_name="ipam.label",
+        string="Labels",
+        help="Labels associated with this network",
+    )
+
     complete_name = fields.Char(
         'Complete Name', 
         compute='_compute_complete_name', 

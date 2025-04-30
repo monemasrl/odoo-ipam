@@ -7,3 +7,4 @@ from . import net
 from . import nat
 from . import ip
 from . import organization
+from . import labels

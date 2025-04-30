@@ -77,6 +77,7 @@
                             <field name="vlan_id" />
                             <field name="organization_id" />
                             <field name="free_ip_count" />
+                            <field name="label_ids" widget="many2many_tags" />
                         </group>
                     </group>
                 </sheet>

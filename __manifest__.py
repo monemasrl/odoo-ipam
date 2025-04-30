@@ -38,6 +38,7 @@
         "views/ip_views.xml",
         "views/net_views.xml",
         "views/nat_views.xml",
+        "views/label_views.xml",
         "views/menu.xml",
     ],
     "application": True,

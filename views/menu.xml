@@ -9,4 +9,5 @@
     <menuitem id="ipam_ip_menu" name="IPs" parent="ipam_menu" action="ipam_ip_action" sequence="40" />
     <menuitem id="ipam_nat_menu" name="NAT" parent="ipam_menu" action="ipam_nat_action" sequence="50" />
     <menuitem id="ipam_organization_menu" name="Organizations" parent="ipam_menu" action="ipam_organization_action" sequence="60" />
+    <menuitem id="ipam_label_menu" name="Labels" parent="ipam_menu" action="ipam_label_action" sequence="70" />
 </odoo>
