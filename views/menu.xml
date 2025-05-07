@@ -3,7 +3,7 @@
     <menuitem name="IPAM"
         id="ipam_menu"
         web_icon="ipam,static/description/icon.svg"
-        sequence="30"/>
+        sequence="40"/>
 
     <menuitem id="ipam_net_menu" name="Networks" parent="ipam_menu" action="ipam_net_action" sequence="10" />
     <menuitem id="ipam_ip_menu" name="IPs" parent="ipam_menu" action="ipam_ip_action" sequence="40" />

@@ -27,3 +27,12 @@ class IpamLabel(models.Model):
         string="Networks",
         help="Networks associated with this label",
     )
+
+    def to_json(self):
+        """Convert the label to JSON format."""
+        data = {
+            "id": self.id,
+            "name": self.name,
+            "networks": [net.to_json() for net in self.network_ids],
+        }
+        return data

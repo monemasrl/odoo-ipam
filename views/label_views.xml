@@ -8,6 +8,7 @@
             <tree string="Label">
                 <field name="name"/>
                 <field name="color"/>
+                <field name="network_ids" widget="many2many_tags" options='{"no_create": true}'/>
             </tree>
         </field>
     </record>
